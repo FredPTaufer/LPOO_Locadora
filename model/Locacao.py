@@ -1,13 +1,8 @@
 from datetime import datetime, date
 from .Veiculo import Veiculo
 from .LocacaoStrategy import CalculoLocacaoStrategy, CalculoPadraoStrategy, CalculoVIPStrategy
+from .ExcecoesPersonalizadas import DataInvalidaError, ExcecaoValorInvalido
 
-
-class DataInvalidaError(Exception):
-    pass
-
-class ExcecaoValorInvalido(Exception):
-    pass
 
 class Locacao:
     def __init__(self, veiculo: Veiculo, data_inicio: date, data_fim: date, estrategia: CalculoLocacaoStrategy = CalculoPadraoStrategy()):

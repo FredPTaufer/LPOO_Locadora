@@ -16,8 +16,9 @@ class Veiculo(ABC):
     
     @placa.setter
     def placa(self, valor):
-        if self.validar_placa(valor):
-            self.__placa = valor
+        valor_normalizado = valor.strip().replace("-", "").upper()
+        if self.validar_placa(valor_normalizado):
+            self.__placa = valor_normalizado
     
     @property
     def taxa_diaria(self):
@@ -30,7 +31,6 @@ class Veiculo(ABC):
         self.__taxa_diaria = valor
 
     def validar_placa(self, placa):
-        placa = placa.strip().replace("-", "").upper()
         if (len(placa) != 7):
             raise PlacaInvalidaError("Placa inválida: deve conter exatamente 7 caracteres.")
         else:

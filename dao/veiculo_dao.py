@@ -27,7 +27,7 @@ class VeiculoDAO(GenericDAO):
                 objeto_veiculo.placa,
                 objeto_veiculo.categoria.value,
                 objeto_veiculo.taxa_diaria,
-                objeto_veiculo.estado_atual.__class__.__name__,
+                objeto_veiculo.estado_atual.__class__.__name__.lower(),
                 objeto_veiculo.__class__.__name__
             ))
             self.conexao.commit()
@@ -102,7 +102,7 @@ class VeiculoDAO(GenericDAO):
                 WHERE vei_placa = %s
             """
             cursor.execute(query, (
-                objeto.__class__.__name__,
+                objeto.__class__.__name__.lower(),
                 objeto.categoria.value,
                 objeto.taxa_diaria,
                 objeto.placa
